@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class WASD : MonoBehaviour
 {
-    public float accel = 1f;
+    public float collectedScore = 0f;
+    public float horAccel = 1f;
+   public float vertAccel = .1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,8 +27,11 @@ public class WASD : MonoBehaviour
 
         //first let's call our Dir() function to find out what the current player inputs are
         Vector3 currentDir = Dir();
+        //multiply our horizontal and vertical move seperatley
+        currentDir.x *= horAccel;
+        currentDir.y *= vertAccel;
         //throw it into Trnaslate, multiply by our acceleration variable
-        transform.Translate(currentDir*accel);
+        transform.Translate(currentDir);
 
 
     }
@@ -44,5 +49,18 @@ public class WASD : MonoBehaviour
         Vector3 myDir = new Vector3(x, y, 0);
         //then we return the value
         return myDir;
+    }
+
+    //checkig for enemy or collectible or collisions
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("player collided with " + collision.gameObject.name);
+
+        //when we collide with something collectible, destroy it and increment the player score
+        if (collision.gameObject.tag == "Collectible")
+        {
+            Destroy(collision.gameObject);
+            collectedScore++;
+        }
     }
 }
