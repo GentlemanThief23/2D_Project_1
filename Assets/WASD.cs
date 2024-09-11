@@ -6,8 +6,8 @@ using UnityEngine;
 public class WASD : MonoBehaviour
 {
     public float collectedScore = 0f;
-    public float horAccel = 1f;
-   public float vertAccel = .1f;
+    public float horAccel = .5f;
+   public float vertAccel = .5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +30,7 @@ public class WASD : MonoBehaviour
         //multiply our horizontal and vertical move seperatley
         currentDir.x *= horAccel;
         currentDir.y *= vertAccel;
-        //throw it into Trnaslate, multiply by our acceleration variable
+        //throw it into Translate, multiply by our acceleration variable
         transform.Translate(currentDir);
 
 
