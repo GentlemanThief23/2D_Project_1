@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2997701570297148333}
   - component: {fileID: 6242329221950252186}
   m_Layer: 0
-  m_Name: Collectible
+  m_Name: Hazard
   m_TagString: Collectible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
