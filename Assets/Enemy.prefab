@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 6381471413429291253}
   - component: {fileID: 5183023583084808741}
   - component: {fileID: 8759972685400336947}
+  - component: {fileID: -5906332523694282637}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Collectible
@@ -210,6 +211,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-5906332523694282637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6654120832041863902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed0f70ebcbede94c83dca2d50b9110a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LeftWall: {fileID: 0}
+  RightWall: {fileID: 0}
+  Ceiling: {fileID: 0}
+  Ground: {fileID: 0}
+  Enemy: {fileID: 6654120832041863902}
+  targetPlayer: {fileID: 2122631301695516750, guid: 60302fd94b0ed8d44bd1bdf2e03570e0, type: 3}
 --- !u!1 &7809558081674112929
 GameObject:
   m_ObjectHideFlags: 0
