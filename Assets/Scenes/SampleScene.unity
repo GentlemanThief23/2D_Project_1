@@ -372,9 +372,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myTimer: 0
+  EnemyAccel: 0.25
   myFixedTimer: 0
   myPlayer: {fileID: 302988722}
   myCollectible: {fileID: 6654120832041863902, guid: dbfa99ae1af53d44ca3d31b571941ffc, type: 3}
+  myEnemy: {fileID: 6654120832041863902, guid: dbfa99ae1af53d44ca3d31b571941ffc, type: 3}
   myScore: {fileID: 352737690}
   spawnInterval: 0.5
   spawnTimer: 0

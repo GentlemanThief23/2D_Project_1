@@ -12,28 +12,39 @@ public class Hazardbehaviour : MonoBehaviour
     public Transform Ceiling;
     public Transform Ground;
 
-
-
-    // Start is called before the first frame update
-    void Start()
+    void OnCollisionEnter(Collision collision)
     {
-        InvokeRepeating("Spawn", 1, .7f);
-
+        // 2
+        if (collision.gameObject.name == "Player")
+        {
+            // 3
+            Destroy(this.transform.gameObject);
+            // 4
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
+            InvokeRepeating("Spawn", 1, .7f);
 
-    void Spawn()
-    {
+        }
 
-        int xpos = (int)Random.Range(LeftWall.position.x, RightWall.position.x);
-        int ypos = (int)Random.Range(Ceiling.position.y, Ground.position.y);
+        // Update is called once per frame
+        void Update()
+        {
 
-        GameObject temp = Instantiate(Hazard, new Vector3(xpos, ypos, 0), Quaternion.identity);
-        //temp.GetComponent<enemyFollow>().targetPlayer = GameObject.FindGameObjectWithTag("Player");
-    }
+        }
+
+        void Spawn()
+        {
+
+            int xpos = (int)Random.Range(LeftWall.position.x, RightWall.position.x);
+            int ypos = (int)Random.Range(Ceiling.position.y, Ground.position.y);
+
+            GameObject temp = Instantiate(Hazard, new Vector3(xpos, ypos, 0), Quaternion.identity);
+            temp.GetComponent<EnemyFollow>().targetPlayer = GameObject.FindGameObjectWithTag("Player");
+        }
+
+  
 }

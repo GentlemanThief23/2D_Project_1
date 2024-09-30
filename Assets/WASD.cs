@@ -8,9 +8,12 @@ public class WASD : MonoBehaviour
     public float collectedScore = 0f;
     public float horAccel = .5f;
    public float vertAccel = .5f;
+
+    public Rigidbody2D _rb;
     // Start is called before the first frame update
     void Start()
     {
+          _rb = GetComponent<Rigidbody2D>();
         
     }
 

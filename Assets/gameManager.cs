@@ -7,11 +7,13 @@ public class gameManager : MonoBehaviour
 {
     //public time passed variable
     public float myTimer = 0f;
+    public float EnemyAccel = 0.25f;
     //
     public float myFixedTimer = 0f;
 
     public GameObject myPlayer;
     public GameObject myCollectible;
+    public GameObject myEnemy;
     public TextMeshProUGUI myScore;
     WASD playerScript;
     float playerscore;
@@ -36,12 +38,16 @@ public class gameManager : MonoBehaviour
         if(spawnTimer >= spawnInterval)
         {
             spawnTimer = 0f;
-            Instantiate(myCollectible);
+            GameObject temp = Instantiate(myEnemy);
+            EnemyFollow tempFollow = temp.GetComponent<EnemyFollow>();
+            tempFollow.speed += myTimer * EnemyAccel;
             Debug.Log("enemy spawn");
 
         }
         playerscore = playerScript.collectedScore;
         myScore.text = playerscore.ToString();
+
+        
        
     }
 
