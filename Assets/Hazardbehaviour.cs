@@ -43,7 +43,7 @@ public class Hazardbehaviour : MonoBehaviour
             int ypos = (int)Random.Range(Ceiling.position.y, Ground.position.y);
 
             GameObject temp = Instantiate(Hazard, new Vector3(xpos, ypos, 0), Quaternion.identity);
-            temp.GetComponent<EnemyFollow>().targetPlayer = GameObject.FindGameObjectWithTag("Player");
+            
         }
 
   

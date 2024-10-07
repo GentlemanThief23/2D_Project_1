@@ -2,30 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class gameManager : MonoBehaviour
 {
     //public time passed variable
     public float myTimer = 0f;
-    public float EnemyAccel = 0.25f;
+    public TextMeshProUGUI gameOverText;
     //
     public float myFixedTimer = 0f;
-
+    public Transform LeftWall;
+    public Transform RightWall;
+    public Transform Ceiling;
+    public Transform Ground;
+   
     public GameObject myPlayer;
-    public GameObject myCollectible;
     public GameObject myEnemy;
     public TextMeshProUGUI myScore;
     WASD playerScript;
     float playerscore;
 
-    public float spawnInterval = .5f;
-    public float spawnTimer = 0f;
+    public float spawnInterval = 5f;
+    public float spawnTimer = 5f;
     // Start is called before the first frame update
     void Start()
     {
         myPlayer = GameObject.FindGameObjectWithTag("Player");
         playerScript = myPlayer.GetComponent<WASD>();
-
+        gameOverText.gameObject.SetActive(true);
+       
     }
 
     // Update is called once per frame
@@ -38,9 +43,13 @@ public class gameManager : MonoBehaviour
         if(spawnTimer >= spawnInterval)
         {
             spawnTimer = 0f;
-            GameObject temp = Instantiate(myEnemy);
-            EnemyFollow tempFollow = temp.GetComponent<EnemyFollow>();
-            tempFollow.speed += myTimer * EnemyAccel;
+           
+            int xpos = (int)Random.Range(LeftWall.position.x, RightWall.position.x);
+            int ypos = (int)Random.Range(Ceiling.position.y, Ground.position.y);
+
+            GameObject temp = Instantiate(myEnemy, new Vector3(xpos, ypos, 0), Quaternion.identity);
+            temp.GetComponent<MoveToObject>().Player = myPlayer;
+
             Debug.Log("enemy spawn");
 
         }
@@ -50,7 +59,10 @@ public class gameManager : MonoBehaviour
         
        
     }
+   
+    
 
+    
     void FixedUpdate()
     {
         //add time passed between each physics frame
